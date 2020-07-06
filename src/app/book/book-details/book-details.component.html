@@ -1,0 +1,15 @@
+<form [formGroup]="bookForm" (submit)="apply()" [class.ng-submit]="submitted">
+    <div class="form-group row">
+        <input placeholder="ISBN" formControlName="isbn" />
+    </div>
+    <div class="form-group row">
+        <input placeholder="Author" formControlName="author" />
+    </div>
+    <div class="form-group row">
+        <input placeholder="Title" formControlName="title" />
+    </div>
+    <div class="form-group row">
+        <button type="submit">Apply</button>
+        <button type="button" (click)="cancelForm()">Cancel</button>
+    </div>
+</form>

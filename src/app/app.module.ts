@@ -1,3 +1,6 @@
+import { SharedModule } from './shared/shared.module';
+import { CoreModule } from './core/core.module';
+import { BookModule } from './book/book.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,7 +13,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    CoreModule,
+    BookModule
   ],
   providers: [],
   bootstrap: [AppComponent]

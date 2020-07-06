@@ -1,0 +1,11 @@
+<ul class="book-card-container">
+    <li *ngFor="let book of (books$ | async)" (click)="showBook(book)">
+        <h2>{{ book.title }}</h2>
+        <img class="book-card-img" [src]="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-S.jpg'" />
+        <h3>{{ book.author }}</h3>
+    </li>
+</ul>
+
+<button (click)="newBook()" class="floating-button">
+  Add a new book
+</button>

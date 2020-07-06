@@ -1,0 +1,6 @@
+[
+  {"id": 1, "name": "IT", "icon": "favorite"},
+  {"id": 2, "name": "Science fiction", "icon": "star_rate"},
+  {"id": 3, "name": "Fantasy", "icon": "gesture"},
+  {"id": 4, "name": "Crime", "icon": "fingerprint"}
+]

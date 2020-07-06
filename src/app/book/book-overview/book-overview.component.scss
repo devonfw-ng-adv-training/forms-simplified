@@ -1,0 +1,26 @@
+ul.book-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+    li {
+        width: 40%;
+        list-style-type: none;
+        border: 1px cadetblue solid;
+        margin: 1%;
+        padding: 1%;
+    }
+    .book-card {
+        width: 20em;
+        margin: 1em 0 0 1em;
+        .book-card-img {
+            height: 58px;
+        }
+    }
+}
+
+button.floating-button {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
