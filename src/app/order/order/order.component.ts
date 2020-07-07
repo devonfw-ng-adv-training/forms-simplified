@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss']
+  styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
   orderForm: FormGroup;
@@ -12,7 +12,7 @@ export class OrderComponent implements OnInit {
     this.orderForm = this.fb.group({
       name: this.fb.control(''),
       lastname: this.fb.control(''),
-      address: this.fb.control(''),
+      address: new FormControl(),
     });
   }
 
