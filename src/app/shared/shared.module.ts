@@ -12,10 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  declarations: [NavigationComponent],
+  declarations: [],
   exports: [
     CommonModule,
-    NavigationComponent,
     HttpClientModule,
     ReactiveFormsModule
   ]
