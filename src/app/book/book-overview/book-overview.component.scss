@@ -9,6 +9,9 @@ ul.book-card-container {
         border: 1px cadetblue solid;
         margin: 1%;
         padding: 1%;
+        h3 {
+            float: right;
+        }
     }
     .book-card {
         width: 20em;

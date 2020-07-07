@@ -1,3 +1,17 @@
+li {
+    display: inline-block;
+    padding-right: 24px;
+}
+
 a {
-  margin-left: 0.5em;
+    text-decoration: none;
+    &:visited {
+        color: inherit;
+    }
+}
+
+.active {
+    text-decoration: solid;
+    color: cadetblue;
+    border-bottom: solid cadetblue 1px;
 }

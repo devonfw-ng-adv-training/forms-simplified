@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea {
+    font-size: 1.2em;
+    border: 1px solid gainsboro;
+    color: cadetblue;
+    font-family: inherit;
+    font-weight: 300;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+textarea {
+    width: 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 4px;
+    outline: none;
+}
+
+input:focus {
+    border: 1px solid black;
+}
+
+button {
+    font-size: 1.3em;
+    padding: 5px 12px;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    border: 1px solid silver;
+    background-image: linear-gradient(to top, gainsboro 0%, gainsboro 90%);
+    &:hover {
+        border: 1px solid cadetblue;
+        background-image: linear-gradient(to top, cadetblue 0%, cadetblue 90%);
+    }
+}
