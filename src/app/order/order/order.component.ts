@@ -23,7 +23,11 @@ export class OrderComponent implements OnInit {
   }
 
   apply() {
-    console.log(this.orderForm.value);
+    if (this.orderForm.valid) {
+      console.log(this.orderForm.value);
+    } else {
+      console.log('invalid');
+    }
   }
 
   cancelForm() {
