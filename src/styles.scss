@@ -3,6 +3,8 @@
 input[type="text"],
 input[type="email"],
 input[type="search"],
+select,
+option,
 textarea {
     font-size: 1.2em;
     border: 1px solid gainsboro;
@@ -14,6 +16,8 @@ textarea {
 input[type="text"],
 input[type="email"],
 input[type="search"],
+select,
+option,
 textarea {
     width: 100%;
     min-width: 100%;
