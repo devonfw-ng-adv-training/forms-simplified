@@ -1,5 +1,5 @@
 import { FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { Address } from './address';
 
 @Component({
@@ -16,6 +16,7 @@ import { Address } from './address';
 })
 export class AddressComponent implements ControlValueAccessor {
   form: FormGroup;
+  @Input() title: string;
 
   constructor() {
     this.form = new FormGroup({

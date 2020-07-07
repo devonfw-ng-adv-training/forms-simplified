@@ -12,7 +12,8 @@ export class OrderComponent implements OnInit {
     this.orderForm = this.fb.group({
       name: this.fb.control(''),
       lastname: this.fb.control(''),
-      address: new FormControl(),
+      invoiceAddress: new FormControl(),
+      deliveryAddress: new FormControl()
     });
   }
 

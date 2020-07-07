@@ -7,7 +7,8 @@
         <label for=lastname>Lastname</label>
         <input id="lastname" type="text" placeholder="lastname" formControlName="lastname" />
     </div>
-    <app-address formControlName="address"></app-address>
+    <app-address [title]="'invoice address'" formControlName="invoiceAddress"></app-address>
+    <app-address [title]="'delivery address'" formControlName="deliveryAddress"></app-address>
     <!-- TODO Step 1 address -->
     <!-- TODO Step 2 refactor to CVA -->
     <!-- TODO Step 3 invoice & delivery address -->
