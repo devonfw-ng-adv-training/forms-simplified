@@ -1,3 +1,4 @@
+import { OrderComponent } from './order/order/order.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BookOverviewComponent } from './book/book-overview/book-overview.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'book',
     component: BookDetailsComponent,
+  },
+  {
+    path: 'order',
+    component: OrderComponent
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];

@@ -1,3 +1,4 @@
+import { OrderModule } from './order/order.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BookModule } from './book/book.module';
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    BookModule
+    BookModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
