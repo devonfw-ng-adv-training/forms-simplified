@@ -16,7 +16,7 @@ import { Address } from './address';
 })
 export class AddressComponent implements ControlValueAccessor {
   form: FormGroup;
-  @Input() title: string;
+  @Input() title?: string;
 
   constructor() {
     this.form = new FormGroup({

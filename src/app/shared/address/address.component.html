@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-    <h2>{{title}}</h2>
+    <h2 *ngIf="title">{{title}}</h2>
     <div class="form-group row">
         <label for=zip>Zip Code</label>
         <input id="zip" type="text" placeholder="zip" formControlName="zip" />

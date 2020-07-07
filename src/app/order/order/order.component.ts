@@ -8,6 +8,8 @@ import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 })
 export class OrderComponent implements OnInit {
   orderForm: FormGroup;
+  hasDeliveryAddress = new FormControl();
+
   constructor(private fb: FormBuilder) {
     this.orderForm = this.fb.group({
       name: this.fb.control(''),

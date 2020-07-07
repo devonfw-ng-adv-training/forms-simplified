@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AddressComponent } from './address/address.component';
 
@@ -15,7 +15,7 @@ import { AddressComponent } from './address/address.component';
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AddressComponent
+    AddressComponent,
   ]
 })
 export class SharedModule {

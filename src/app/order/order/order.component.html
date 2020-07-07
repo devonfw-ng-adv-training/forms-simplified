@@ -7,13 +7,22 @@
         <label for=lastname>Lastname</label>
         <input id="lastname" type="text" placeholder="lastname" formControlName="lastname" />
     </div>
-    <app-address [title]="'invoice address'" formControlName="invoiceAddress"></app-address>
-    <app-address [title]="'delivery address'" formControlName="deliveryAddress"></app-address>
+    <div class="form-group row">
+        <app-address [title]="'invoice address'" formControlName="invoiceAddress"></app-address>
+    </div>
+    <div class="form-group row">
+        <label for=devAddress>Different Delivery Address?</label>
+        <input id="devAddress" type="checkbox" [formControl]="hasDeliveryAddress">
+    </div>
+    <div class="form-group row">
+        <app-address *ngIf="hasDeliveryAddress.value" [title]="'delivery address'" formControlName="deliveryAddress">
+        </app-address>
+    </div>
     <!-- TODO Step 1 address -->
     <!-- TODO Step 2 refactor to CVA -->
     <!-- TODO Step 3 invoice & delivery address -->
 
-    <div class="form-group row">
+    <div class="form-group row padding-top">
         <button type="submit">console.log</button>
         <button type="button" (click)="cancelForm()">Cancel</button>
     </div>
