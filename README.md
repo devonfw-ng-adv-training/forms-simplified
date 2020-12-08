@@ -1,27 +1,13 @@
-# FormsSimplified
+# Exercises related to the CVA (Control Value Accessor)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+This repository contains the base code for a book store.
+There is a server and a frontend.
 
-## Development server
+To start both use **"npm run start"** (see package.json for details).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Starting point for the exercise is the master branch.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+There are two sets of other branches with partial and complete solutions for
+* Using a CVA to connect a custom drop down input field for a book's genre to a reactive forms model
+(branches 1-added-dropdown-component, 2-added-genres-to-dropdown, 3-extended-control-value-accessor)
+* Using a CVA to create a sub form for an address (branches nested/...)
