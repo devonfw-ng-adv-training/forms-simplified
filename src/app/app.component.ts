@@ -19,6 +19,7 @@ export class AppComponent implements OnInit, OnDestroy {
       password: [null, Validators.required],
       rating: [null, Validators.required],
       isOptOut: [null],
+      overallRating: [null],
     });
   }
 

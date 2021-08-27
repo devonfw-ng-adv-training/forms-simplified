@@ -25,6 +25,14 @@
         <input type="checkbox" formControlName="isOptOut">
       </td>
     </tr>
+    <tr>
+      <td>
+        Rate your overall site experience
+      </td>
+      <td>
+        <app-rating formControlName="overallRating"></app-rating>
+      </td>
+    </tr>
   </table>
   <button type="submit" [disabled]="registrationForm.invalid">Create Account</button>
 </form>
