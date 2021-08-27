@@ -19,6 +19,7 @@ type OnTouchedFn = () => void;
 export class RatingComponent implements ControlValueAccessor {
   disabled = false;
   rating = Array(5).fill(false);
+  hoverIndex = -1;
 
   private onChange: OnChangeFn = (rating: number): void => {};
   private onTouched: OnTouchedFn = (): void => {};

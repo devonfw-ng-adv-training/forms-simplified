@@ -1,3 +1,3 @@
-<div *ngFor="let singleRating of rating; let i = index" class="star" [class.active]="singleRating"
-  (click)="rate(i + 1)" [class.disabled]="disabled">
+<div *ngFor="let singleRating of rating; let i = index" class="star" [class.active]="singleRating" [class.hover]="hoverIndex >= i"
+  (click)="rate(i + 1)" [class.disabled]="disabled" (mouseenter)="hoverIndex = i" (mouseleave)="hoverIndex = -1">
 </div>
