@@ -1,5 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -17,7 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.registrationForm = formBuilder.group({
       username: [null, Validators.required],
       password: [null, Validators.required],
-      rating: [null, Validators.required],
+      rating: [null, [Validators.required, this.validateRating]],
       isOptOut: [null],
       overallRating: [null],
     });
@@ -43,5 +49,24 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logDetails(): void {
     console.log(this.registrationForm.value);
+  }
+
+  get isInvalidRating(): boolean {
+    return this.registrationForm.controls.rating.touched && this.registrationForm.controls.rating.invalid;
+  }
+
+  private validateRating(
+    control: AbstractControl
+  ): ValidationErrors | null {
+    const rating = control.value;
+    if (rating == null) {
+      return null;
+    }
+    if (rating <= 3) {
+      return {
+        invalidRating: true,
+      };
+    }
+    return null;
   }
 }

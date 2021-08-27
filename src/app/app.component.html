@@ -12,6 +12,9 @@
     <tr>
       <td>
         Rate your registration experience
+        <span *ngIf="isInvalidRating" class="validation-error">
+          The rating must be greater than 3
+        </span>
       </td>
       <td>
         <app-rating formControlName="rating"></app-rating>
