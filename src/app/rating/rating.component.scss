@@ -21,19 +21,19 @@ $inactiveColor: rgb(108, 192, 192);
   /* Controlls the size of the stars. */
   font-size: 12px;
 
+  &.active, &.hover {
+    border-bottom-color: $activeColor;
+    &:before, &:after {
+      border-bottom-color: $activeColor;
+    }
+  }
+
   &.disabled {
     border-bottom-color: $disabledColor;
     &:before, &:after {
       border-bottom-color: $disabledColor;
     }
     cursor: not-allowed;
-  }
-
-  &.active {
-    border-bottom-color: $activeColor;
-    &:before, &:after {
-      border-bottom-color: $activeColor;
-    }
   }
 
   &:before, &:after {
