@@ -1,26 +1,14 @@
-import { OrderModule } from './order/order.module';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
-import { BookModule } from './book/book.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RatingComponent } from './rating/rating.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule,
-    CoreModule,
-    BookModule,
-    OrderModule
-  ],
+  declarations: [AppComponent, RatingComponent],
+  imports: [BrowserModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,2 +1,22 @@
-<app-navigation></app-navigation>
-<router-outlet></router-outlet>
+<h3>Register for this awesome app</h3>
+<form (submit)="logDetails()" [formGroup]="registrationForm">
+  <table>
+    <tr>
+      <td>User name</td>
+      <td><input type="text" formControlName="username"></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" formControlName="password"></td>
+    </tr>
+    <tr>
+      <td>
+        Rate your registration experience
+      </td>
+      <td>
+        <app-rating (valueChanged)="updateRating($event)"></app-rating>
+      </td>
+    </tr>
+  </table>
+  <button type="submit" [disabled]="registrationForm.invalid">Create Account</button>
+</form>

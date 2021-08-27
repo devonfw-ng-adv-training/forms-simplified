@@ -1,6 +1,0 @@
-[
-    { "id": 1, "author": "Joshua Bloch", "title": "Effective Java, 2nd Edition", "isbn": "9780321356680", "genre": 1 },
-    { "id": 2, "author": "Gavin King", "title": "Java Persistence With Hibernate", "isbn": "9781617290459", "genre": 2 },
-    { "id": 3, "author": "Douglas Crockford", "title": "JavaScript: The Good Parts", "isbn": "9780596517748", "genre": 3 },
-    { "id": 4, "author": "Kent Beck", "title": "Test Driven Development", "isbn": "9780321146533", "genre": 4 }
-]

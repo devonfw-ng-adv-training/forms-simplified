@@ -1,0 +1,60 @@
+$activeColor: #FC0;
+$disabledColor: lightgray;
+$inactiveColor: rgb(108, 192, 192);
+
+.star {
+  position: relative;
+  cursor: pointer;
+
+  display: inline-block;
+  width: 0;
+  height: 0;
+
+  margin-left: .9em;
+  margin-right: .9em;
+  margin-bottom: 1.2em;
+
+  border-right:  .3em solid transparent;
+  border-bottom: .7em  solid $inactiveColor;
+  border-left:   .3em solid transparent;
+
+  /* Controlls the size of the stars. */
+  font-size: 12px;
+
+  &.disabled {
+    border-bottom-color: $disabledColor;
+    &:before, &:after {
+      border-bottom-color: $disabledColor;
+    }
+    cursor: not-allowed;
+  }
+
+  &.active {
+    border-bottom-color: $activeColor;
+    &:before, &:after {
+      border-bottom-color: $activeColor;
+    }
+  }
+
+  &:before, &:after {
+    content: '';
+
+    display: block;
+    width: 0;
+    height: 0;
+
+    position: absolute;
+    top: .6em;
+    left: -1em;
+
+    border-right:  1em solid transparent;
+    border-bottom: .7em  solid $inactiveColor;
+    border-left:   1em solid transparent;
+
+    transform: rotate(-35deg);
+  }
+
+  &:after {
+    transform: rotate(35deg);
+  }
+}
