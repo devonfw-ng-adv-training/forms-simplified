@@ -1,22 +1,49 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+type OnChangeFn = (rating: number) => void;
+type OnTouchedFn = () => void;
 
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => RatingComponent),
+      multi: true,
+    },
+  ],
 })
-export class RatingComponent {
-  @Input() set value(rating: number) {
+export class RatingComponent implements ControlValueAccessor {
+  disabled = false;
+  rating = Array(5).fill(false);
+
+  private onChange: OnChangeFn = (rating: number): void => {};
+  private onTouched: OnTouchedFn = (): void => {};
+
+  writeValue(rating: number): void {
     this.updateRating(rating);
   }
-  @Input() disabled = false;
-  @Output() readonly valueChanged = new EventEmitter<number>();
-  rating = Array(5).fill(false);
+
+  registerOnChange(fn: OnChangeFn): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: OnTouchedFn): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(disabled: boolean): void {
+    this.disabled = disabled;
+  }
 
   rate(rating: number): void {
     if (!this.disabled) {
       this.updateRating(rating);
-      this.valueChanged.emit(rating);
+      this.onTouched();
+      this.onChange(rating);
     }
   }
 

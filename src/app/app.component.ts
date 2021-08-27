@@ -22,10 +22,4 @@ export class AppComponent implements OnInit {
   logDetails(): void {
     console.log(this.registrationForm.value);
   }
-
-  updateRating(rating: number): void {
-    this.registrationForm.controls.rating.setValue(rating, {
-      emitEvent: false,
-    });
-  }
 }
