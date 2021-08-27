@@ -17,6 +17,14 @@
         <app-rating formControlName="rating"></app-rating>
       </td>
     </tr>
+    <tr>
+      <td>
+        I don't want to rate my experience
+      </td>
+      <td>
+        <input type="checkbox" formControlName="isOptOut">
+      </td>
+    </tr>
   </table>
   <button type="submit" [disabled]="registrationForm.invalid">Create Account</button>
 </form>
