@@ -12,6 +12,7 @@ export class RatingComponent {
   @Input() disabled = false;
   @Output() readonly valueChanged = new EventEmitter<number>();
   rating = Array(5).fill(false);
+  hoverIndex = -1;
 
   rate(rating: number): void {
     if (!this.disabled) {
