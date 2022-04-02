@@ -12,7 +12,7 @@ export class OrderComponent implements OnInit {
     this.orderForm = this.fb.group({
       name: this.fb.control(''),
       lastname: this.fb.control(''),
-      address: new FormControl(),
+      address: this.fb.control(null),
     });
   }
 
