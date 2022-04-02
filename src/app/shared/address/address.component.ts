@@ -47,6 +47,8 @@ export class AddressComponent implements ControlValueAccessor, Validator {
   writeValue(val: Address): void {
     if (val) {
       this.form.setValue(val, { emitEvent: false });
+    } else {
+      this.form.reset();
     }
   }
 }
