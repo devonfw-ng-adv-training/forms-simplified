@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup } from '@angular/forms';
-
-export interface AddressModel {
-  zip: string;
-  city: string;
-  street: string;
-  country: string;
-}
+import { Address } from './address';
 
 interface AddressFormModel {
   zip: FormControl<string>;
@@ -32,12 +26,12 @@ export class AddressComponent implements ControlValueAccessor {
     });
   }
 
-  registerOnChange(fn: (address: AddressModel) => void): void {
+  registerOnChange(fn: (address: Address) => void): void {
   }
 
   registerOnTouched(fn: () => void): void {
   }
 
-  writeValue(obj: AddressModel): void {
+  writeValue(obj: Address): void {
   }
 }
