@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+interface OrderFormModel {
+  name: FormControl<string>;
+  lastname: FormControl<string>;
+}
 
 @Component({
   selector: 'app-order',
@@ -7,7 +12,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./order.component.scss']
 })
 export class OrderComponent implements OnInit {
-  orderForm: FormGroup;
+  orderForm: FormGroup<OrderFormModel>;
   constructor(private fb: FormBuilder) {
     this.orderForm = this.fb.group({
       name: this.fb.control(''),
