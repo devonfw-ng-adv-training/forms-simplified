@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { AddressModel } from 'src/app/shared/address/address.component';
+import { Address } from 'src/app/shared/address/address';
 
 interface OrderFormModel {
   name: FormControl<string>;
   lastname: FormControl<string>;
-  invoiceAddress: FormControl<AddressModel>;
-  deliveryAddress: FormControl<AddressModel>;
+  invoiceAddress: FormControl<Address>;
+  deliveryAddress: FormControl<Address>;
 }
 
 @Component({
@@ -22,8 +22,8 @@ export class OrderComponent implements OnInit {
     this.orderForm = this.fb.group({
       name: this.fb.control(''),
       lastname: this.fb.control(''),
-      invoiceAddress: this.fb.control<AddressModel>(null),
-      deliveryAddress: this.fb.control<AddressModel>(null)
+      invoiceAddress: this.fb.control<Address>(null),
+      deliveryAddress: this.fb.control<Address>(null)
     });
   }
 
