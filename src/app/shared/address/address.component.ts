@@ -1,9 +1,19 @@
-import {
-  FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR, Validators,
-  NG_VALIDATORS, Validator, AbstractControl, ValidationErrors
-} from '@angular/forms';
 import { Component, forwardRef, Input } from '@angular/core';
-import { Address } from './address';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
+
+export interface AddressModel {
+  zip: string;
+  city: string;
+  street: string;
+  country: string;
+}
+
+interface AddressFormModel {
+  zip: FormControl<string>;
+  city: FormControl<string>;
+  street: FormControl<string>;
+  country: FormControl<string>;
+}
 
 @Component({
   selector: 'app-address',
@@ -21,7 +31,7 @@ import { Address } from './address';
     },]
 })
 export class AddressComponent implements ControlValueAccessor, Validator {
-  form: FormGroup;
+  form: FormGroup<AddressFormModel>;
   @Input() title?: string;
 
   constructor() {
@@ -33,18 +43,18 @@ export class AddressComponent implements ControlValueAccessor, Validator {
     });
   }
 
-  validate(control: AbstractControl): ValidationErrors {
+  validate(): ValidationErrors {
     return this.form.valid ? null : { invalidForm: { valid: false, message: 'address form is invalid' } };
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (address: AddressModel) => void): void {
     this.form.valueChanges.subscribe(fn);
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
   }
 
-  writeValue(val: Address): void {
+  writeValue(val: AddressModel): void {
     if (val) {
       this.form.setValue(val, { emitEvent: false });
     } else {
