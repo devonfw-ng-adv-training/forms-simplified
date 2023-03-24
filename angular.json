@@ -133,5 +133,7 @@
       }
     }
   },
-  "defaultProject": "star-rating"
+  "cli": {
+    "analytics": false
+  }
 }

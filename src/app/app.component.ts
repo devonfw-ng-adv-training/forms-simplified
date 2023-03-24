@@ -1,7 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+interface RegistrationFormModel {
+  username: FormControl<string>;
+  password: FormControl<string>;
+  rating: FormControl<number | null>;
+  isOptOut: FormControl<boolean>;
+}
 
 @Component({
   selector: 'app-root',
@@ -9,16 +16,16 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  registrationForm: FormGroup;
+  registrationForm: FormGroup<RegistrationFormModel>;
 
   private destroyed$ = new Subject();
 
   constructor(formBuilder: FormBuilder) {
     this.registrationForm = formBuilder.group({
-      username: [null, Validators.required],
-      password: [null, Validators.required],
-      rating: [null, Validators.required],
-      isOptOut: [null],
+      username: formBuilder.nonNullable.control<string>('', Validators.required),
+      password: formBuilder.nonNullable.control<string>('', Validators.required),
+      rating: formBuilder.control<number | null>(null, Validators.required),
+      isOptOut: formBuilder.nonNullable.control<boolean>(false),
     });
   }
 
