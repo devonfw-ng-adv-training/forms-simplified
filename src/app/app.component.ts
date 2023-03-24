@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+interface RegistrationFormModel {
+  username: FormControl<string>;
+  password: FormControl<string>;
+  rating: FormControl<number | null>;
+}
 
 @Component({
   selector: 'app-root',
@@ -7,13 +13,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  registrationForm: FormGroup;
+  registrationForm: FormGroup<RegistrationFormModel>;
 
   constructor(formBuilder: FormBuilder) {
     this.registrationForm = formBuilder.group({
-      username: [null, Validators.required],
-      password: [null, Validators.required],
-      rating: [null],
+      username: formBuilder.nonNullable.control<string>('', Validators.required),
+      password: formBuilder.nonNullable.control<string>('', Validators.required),
+      rating: formBuilder.control<number | null>(null),
     });
   }
 
