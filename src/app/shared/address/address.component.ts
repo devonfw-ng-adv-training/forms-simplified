@@ -1,5 +1,19 @@
-import { FormControl, FormGroup, ControlValueAccessor } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormGroup } from '@angular/forms';
+
+export interface AddressModel {
+  zip: string;
+  city: string;
+  street: string;
+  country: string;
+}
+
+interface AddressFormModel {
+  zip: FormControl<string>;
+  city: FormControl<string>;
+  street: FormControl<string>;
+  country: FormControl<string>;
+}
 
 @Component({
   selector: 'app-address',
@@ -7,23 +21,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent implements ControlValueAccessor {
-  form: FormGroup;
+  form: FormGroup<AddressFormModel>;
 
   constructor() {
     this.form = new FormGroup({
-      street: new FormControl(),
-      zip: new FormControl(),
-      city: new FormControl(),
-      country: new FormControl()
+      street: new FormControl(''),
+      zip: new FormControl(''),
+      city: new FormControl(''),
+      country: new FormControl('')
     });
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (address: AddressModel) => void): void {
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
   }
 
-  writeValue(obj: any): void {
+  writeValue(obj: AddressModel): void {
   }
 }
