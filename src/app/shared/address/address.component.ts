@@ -1,6 +1,19 @@
-import { FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Component, OnInit, forwardRef } from '@angular/core';
-import { Address } from './address';
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+export interface AddressModel {
+  zip: string;
+  city: string;
+  street: string;
+  country: string;
+}
+
+interface AddressFormModel {
+  zip: FormControl<string>;
+  city: FormControl<string>;
+  street: FormControl<string>;
+  country: FormControl<string>;
+}
 
 @Component({
   selector: 'app-address',
@@ -15,7 +28,7 @@ import { Address } from './address';
   ]
 })
 export class AddressComponent implements ControlValueAccessor {
-  form: FormGroup;
+  form: FormGroup<AddressFormModel>;
 
   constructor() {
     this.form = new FormGroup({
@@ -26,14 +39,14 @@ export class AddressComponent implements ControlValueAccessor {
     });
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: (address: AddressModel) => void): void {
     this.form.valueChanges.subscribe(fn);
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
   }
 
-  writeValue(val: Address): void {
+  writeValue(val: AddressModel): void {
     if (val) {
       this.form.setValue(val, { emitEvent: false });
     } else {
