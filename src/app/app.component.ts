@@ -1,13 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormGroup,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
+interface RegistrationFormModel {
+  username: FormControl<string>;
+  password: FormControl<string>;
+  rating: FormControl<number | null>;
+  isOptOut: FormControl<boolean>;
+  overallRating: FormControl<number | null>;
+}
 
 @Component({
   selector: 'app-root',
@@ -15,17 +17,17 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  registrationForm: FormGroup;
+  registrationForm: FormGroup<RegistrationFormModel>;
 
   private destroyed$ = new Subject();
 
   constructor(formBuilder: FormBuilder) {
     this.registrationForm = formBuilder.group({
-      username: [null, Validators.required],
-      password: [null, Validators.required],
-      rating: [null, [Validators.required, this.validateRating]],
-      isOptOut: [null],
-      overallRating: [null],
+      username: formBuilder.nonNullable.control<string>('', Validators.required),
+      password: formBuilder.nonNullable.control<string>('', Validators.required),
+      rating: formBuilder.control<number | null>(null, [Validators.required, this.validateRating]),
+      isOptOut: formBuilder.nonNullable.control<boolean>(false),
+      overallRating: formBuilder.control<number | null>(null),
     });
   }
 
