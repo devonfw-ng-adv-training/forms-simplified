@@ -1,12 +1,6 @@
 import { Component, forwardRef, Input } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
-
-export interface AddressModel {
-  zip: string;
-  city: string;
-  street: string;
-  country: string;
-}
+import { Address } from './address';
 
 interface AddressFormModel {
   zip: FormControl<string>;
@@ -47,14 +41,14 @@ export class AddressComponent implements ControlValueAccessor, Validator {
     return this.form.valid ? null : { invalidForm: { valid: false, message: 'address form is invalid' } };
   }
 
-  registerOnChange(fn: (address: AddressModel) => void): void {
+  registerOnChange(fn: (address: Address) => void): void {
     this.form.valueChanges.subscribe(fn);
   }
 
   registerOnTouched(fn: () => void): void {
   }
 
-  writeValue(val: AddressModel): void {
+  writeValue(val: Address): void {
     if (val) {
       this.form.setValue(val, { emitEvent: false });
     } else {
