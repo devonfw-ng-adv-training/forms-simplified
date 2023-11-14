@@ -1,4 +1,4 @@
-import { Resolve, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { Book } from '../book';
 import { Observable, throwError as _throw } from 'rxjs';
 import { BookService } from '../book.service';
@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BookDetailsResolver implements Resolve<Book> {
+export class BookDetailsResolver  {
   constructor(private bookService: BookService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Book> {
