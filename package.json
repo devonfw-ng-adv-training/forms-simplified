@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "server": "node ./server/server.ts",
-    "server:debug": "node %NODE_DEBUG_OPTION% ./server/server.ts"
+    "server:debug": "node %NODE_DEBUG_OPTION% ./server/server.ts",
+    "cypress:open": "cypress open"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
     "@typescript-eslint/parser": "^5.17.0",
     "codelyzer": "^6.0.0",
     "concurrently": "^7.0.0",
+    "cypress": "^13.5.1",
     "eslint": "~8.12.0",
     "jasmine-core": "~4.0.1",
     "jasmine-spec-reporter": "~7.0.0",
@@ -45,7 +47,6 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~4.0.2",
     "karma-jasmine-html-reporter": "^1.7.0",
-    "protractor": "~7.0.0",
     "ts-node": "~7.0.0",
     "typescript": "~4.9.5"
   }
