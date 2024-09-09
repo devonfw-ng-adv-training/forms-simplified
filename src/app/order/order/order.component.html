@@ -9,6 +9,7 @@
     </div>
     <div class="form-group row">
         <app-address [title]="'invoice address'" formControlName="invoiceAddress"></app-address>
+        {{ orderForm.controls.invoiceAddress.errors | json }}
     </div>
     <div class="form-group row">
         <label for=devAddress>Different Delivery Address?</label>

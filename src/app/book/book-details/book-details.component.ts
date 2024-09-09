@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../book';
 import { BookService } from './../book.service';
+import { Observable, of, timer } from 'rxjs';
+import { switchMap, map, tap } from 'rxjs/operators';
 
 interface BookFormModel {
   id: FormControl<number | null>;
@@ -34,7 +36,7 @@ export class BookDetailsComponent implements OnInit {
     this.bookForm = this.formBuilder.group({
       id: [null],
       author: ['', [Validators.required, Validators.maxLength(20)]],
-      title: ['', [Validators.required, Validators.maxLength(50)]],
+      title: ['', [Validators.required, Validators.maxLength(50)], this.validateTitleExists.bind(this)],
       isbn: ['', [Validators.required, Validators.maxLength(13), Validators.pattern('[0-9]*')]
       ],
     });
@@ -59,5 +61,15 @@ export class BookDetailsComponent implements OnInit {
 
   cancelForm(): void {
     this.router.navigate(['/books']);
+  }
+
+  validateTitleExists(fc: AbstractControl): Observable<ValidationErrors | null> {
+    if (fc.value == null || fc.value === '') {
+      return of(null);
+    }
+    return timer(500).pipe(
+      switchMap(() => this.bookService.checkBookExists(fc.value, this.book?.id)),
+      map((alreadyExists) => alreadyExists ? { alreadyExists } : null)
+    )
   }
 }

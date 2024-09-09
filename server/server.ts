@@ -6,7 +6,7 @@ const readFileSync = fs.readFileSync;
 const bodyParser = require('body-parser');
 const { find, includes, max, map, isString } = require('lodash');
 
-const books = JSON.parse(readFileSync(__dirname + '/books.json', 'utf-8').toString());
+let books = JSON.parse(readFileSync(__dirname + '/books.json', 'utf-8').toString());
 const genres = JSON.parse(readFileSync(__dirname + '/book-genres.json', 'utf-8').toString());
 
 function* idSequence(initial) {
@@ -38,8 +38,7 @@ app.use(bodyParser.json());
 
 app.get('/api/book', (req, res) => {
   res.json(books);
-}
-);
+});
 
 
 app.post('/api/book', hasBook, (req, res) => {
@@ -67,8 +66,17 @@ app.get('/api/book/:id', (req, res) => {
 
 app.get('/api/genres', (req, res) => {
   res.json(genres);
-}
-);
+});
+
+app.post('/api/book-exists', (req, res) => {
+  const book = books.find(book => book.title === req.body.title && book.id !== req.body.id);
+  book ? res.json({ alreadyExists: true }) : res.status(204).send();
+})
+
+app.post('/api/seed', (req, res) => {
+  books = JSON.parse(readFileSync(__dirname + '/books.json', 'utf-8').toString());
+  res.json(books);
+});
 
 app.listen(9000, () => {
   console.log('Server listening on port 9000!');

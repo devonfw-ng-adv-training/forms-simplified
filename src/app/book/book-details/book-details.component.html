@@ -1,18 +1,24 @@
 <form [formGroup]="bookForm" (submit)="apply()" [class.ng-submit]="submitted">
     <div class="form-group row">
         <label for=isbn>ISBN</label>
-        <input id="isbn" type="text" placeholder="ISBN" formControlName="isbn" />
+        <input id="isbn" type="text" placeholder="ISBN" formControlName="isbn" data-cy="isbn-input" />
     </div>
     <div class="form-group row">
         <label for=author>Author</label>
-        <input id="author" type="text" placeholder="Author" formControlName="author" />
+        <input id="author" type="text" placeholder="Author" formControlName="author" data-cy="author-input" />
     </div>
     <div class="form-group row">
         <label for=title>Title</label>
-        <input id="title" type="text" placeholder="Title" formControlName="title" />
+        <input id="title" type="text" placeholder="Title" formControlName="title" data-cy="title-input" />
+        <div *ngIf="bookForm.controls.title.pending">
+            Validating...
+        </div>
+        <div *ngIf="bookForm.controls.title.errors?.alreadyExists">
+            The title is already in use
+        </div>
     </div>
     <div class="form-group row">
-        <button type="submit">Apply</button>
+        <button type="submit" data-cy="apply-button">Apply</button>
         <button type="button" (click)="cancelForm()">Cancel</button>
     </div>
 </form>
