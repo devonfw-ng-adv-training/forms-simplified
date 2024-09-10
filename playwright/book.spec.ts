@@ -1,20 +1,16 @@
-import { BookPage } from "./book.page";
-import { test, expect } from '@playwright/test';
-
-let bookPage;
+import { test, expect } from './base';
 
 test.describe('Book management', () => {
-  test.beforeEach(async ({ page, request }) => {
-    bookPage = new BookPage(page);
+  test.beforeEach(async ({ request }) => {
     await request.post(`/api/seed`);
   })
 
   test.describe('Adding a book', () => {
-    test.beforeEach(async () => {
+    test.beforeEach(async ({bookPage}) => {
       await bookPage.goto();
     })
 
-    test('should add a new book', async ({page}) => {
+    test('should add a new book', async ({page, bookPage}) => {
       const title = 'Lord of the Rings';
       await bookPage.clickAddButton();
       await bookPage.typeIsbn('9780544003415');
@@ -32,17 +28,17 @@ test.describe('Book management', () => {
   test.describe('Updating a book', () => {
     let bookTitle = "Clean Code";
 
-    test.beforeEach(async ({ page, request }) => {
+    test.beforeEach(async ({ bookPage, request }) => {
       const book = {
         author: "Robert Martin",
         title: bookTitle,
         isbn: "9780132350884",
       }
       await request.post(`/api/book`, {data: book});
-      bookPage.goto();
+      await bookPage.goto();
     })
 
-    test('should update the book title', async ({page}) => {
+    test('should update the book title', async ({page, bookPage}) => {
       const newTitle = 'This is a new title';
       await bookPage.getBookCard(bookTitle).click();
       await bookPage.typeTitle(newTitle);
